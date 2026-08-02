@@ -17,7 +17,7 @@ public class WelcomeServlet extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
-
+        // Update from Harshank3012
         out.println("<h1>Welcome Servlet!</h1>");
         out.println("<h2>Welcome Harry</h2>");
     }
