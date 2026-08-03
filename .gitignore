@@ -3,5 +3,5 @@ db.properties
 =======
 /build/
 
-config/db.properties
+src/main/resources/db.properties
 >>>>>>> 43c1aa7ee7dd8569058a1d6094b798dade381eb9
