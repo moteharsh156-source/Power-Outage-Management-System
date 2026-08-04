@@ -31,11 +31,18 @@ public class LoginServlet extends HttpServlet {
 		try {
 			us = dao.Login(email, password);
 			
-			HttpSession session = req.getSession();
+			
 			if(us != null) {
+				HttpSession session = req.getSession();
 				session.setAttribute("us", us);
 				
-				resp.sendRedirect("Dashboard.jsp");
+				if(us.getRole().equals("Citizen")){
+				    resp.sendRedirect("citizendashboard.jsp");
+				}
+				else if(us.getRole().equals("Technician")){
+					resp.sendRedirect("techdashboard.jsp");
+				}
+				
 			}
 			else {
 				req.setAttribute("msg", "Something went wrong :( ");

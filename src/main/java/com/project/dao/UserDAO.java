@@ -88,11 +88,11 @@ public class UserDAO {
 		ResultSet rs = ps.executeQuery();
 		
 		return rs.next();
-		
-		
-		
-		
+	
 	}
+	
+
+	
 }
 
 
