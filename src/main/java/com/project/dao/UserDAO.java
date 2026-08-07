@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -8,6 +9,8 @@ import com.mysql.cj.protocol.Resultset;
 import com.mysql.cj.xdevapi.Result;
 import com.project.model.User;
 import com.project.util.DBConnection;
+
+//import jdk.javadoc.internal.doclets.toolkit.util.PreviewAPIListBuilder;
 
 public class UserDAO {
 
@@ -89,6 +92,38 @@ public class UserDAO {
 		
 		return rs.next();
 	
+	}
+	
+	public boolean updateprofile(User us) throws Exception {
+		
+		Boolean status = false;
+		
+		Connection conn = DBConnection.establishConnection();
+		
+		String query = "update users set full_name = ? , email = ? , password = ? , phone = ? where user_id = ?";
+		
+		PreparedStatement ps = conn.prepareStatement(query);
+		
+		ps.setString(1, us.getFull_name());
+		ps.setString(2, us.getEmail());
+		ps.setString(3, us.getPassword());
+		ps.setString(4, us.getPhone());
+		ps.setInt(5, us.getUser_id());
+		
+		int row = ps.executeUpdate();
+		
+		if(row > 0) {
+			
+			status = true;
+		}
+		
+		ps.close();
+		conn.close();
+		return status;
+		
+		
+		
+		
 	}
 	
 

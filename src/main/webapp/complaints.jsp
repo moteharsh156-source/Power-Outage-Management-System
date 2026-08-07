@@ -1,15 +1,14 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%@ page import = "com.project.model.*"%>
 <% 
 
-Complaints cmp = (Complaints) session.getAttribute("cmp");
+List<Complaints> list = (List<Complaints>) request.getAttribute("complaints");
 
-if(cmp == null){
-	response.sendRedirect("citizendashboard.jsp");
-	return;
-}
+
+
 
 %>
 <!DOCTYPE html>
@@ -23,6 +22,14 @@ if(cmp == null){
 <h1>Welcome to Complaints page</h1>
 
 <p>Here you can see all of your complaints</p>
+
+<% if (list != null && !list.isEmpty()) 
+{ 
+	for (Complaints cmp : list) 
+	{ 
+	
+	%>
+
 
 <div class = "profile">
 
@@ -49,6 +56,15 @@ if(cmp == null){
 <br>
 <strong>Status :</strong>
 <%= cmp.getStatus()%>
+
 </div>
+
+<% }
+	} else 
+	{ %> 
+	<p>You have not submitted any complaints.</p> 
+	
+	<% } %>
+
 </body>
 </html> 

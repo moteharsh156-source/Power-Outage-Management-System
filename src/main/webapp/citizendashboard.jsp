@@ -10,7 +10,7 @@ if(us == null){
 	return;
 }
 
-//get parameter of page 
+//get parameter of page    
 
 String pagename = request.getParameter("page");
 //takes all the parameters from page and stores in pagename
@@ -40,7 +40,7 @@ My Profile
 Report Complaint
 </button></a>
 <br><br>
-<a href = "citizendashboard.jsp?page=complaints"><button>
+<a href = "ComplaintServlet"><button>
 My complaints
 </button></a>
 <br><br>
@@ -94,7 +94,7 @@ else if(pagename.equals("complaints")){
 else if(pagename.equals("update")){
 %>
 
-    <jsp:include page = "update.jsp"/>
+    <jsp:include page = "updateprofile.jsp"/>
 
 <%
 }
